@@ -5,7 +5,7 @@ import com.mby.model.UserModel;
 import java.util.Map;
 
 /**
- * @author ex_meiby
+ * @author meiby
  * @version 1.0
  * @description
  * @date 2018/11/1 11:12
@@ -13,8 +13,10 @@ import java.util.Map;
 
 public interface UserService {
 
-    Map<String, Object> select();
+    UserModel select();
 
     int update(UserModel userModel);
+
+    int update2(UserModel userModel);
 
 }

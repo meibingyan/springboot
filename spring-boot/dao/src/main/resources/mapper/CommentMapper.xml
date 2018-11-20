@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mby.dao.CommentDao" >
+
+    <select id="select" resultType="CommentDO">
+        select
+        id,
+        user_id userId,
+        content,
+        addtime addTime,
+        lastmodify lastModify
+        from comment limit 1
+    </select>
+
+
+    <update id="update" >
+        update comment
+        <set>
+            <if test="content != null and content != '' ">
+                content = #{content},
+            </if>
+            <if test="addTime!=null">
+                addtime = #{addTime},
+            </if>
+            <if test="lastModify!=null">
+                lastmodify = #{lastModify},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

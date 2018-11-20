@@ -6,7 +6,7 @@ import com.mby.entity.UserDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @author ex_meiby
+ * @author meiby
  * @version 1.0
  * @description
  * @date 2018/11/1 11:32
@@ -14,7 +14,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserDao {
 
-    Map<String, Object> select();
+    UserDO select();
 
     int update(UserDO userDO);
 }

@@ -1,7 +1,7 @@
 package com.mby.vo;
 
 /**
- * @author ex_meiby
+ * @author meiby
  * @version 1.0
  * @description
  * @date 2018/11/1 14:52

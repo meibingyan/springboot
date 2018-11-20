@@ -3,7 +3,7 @@ package com.mby.entity;
 import java.util.Date;
 
 /**
- * @author ex_meiby
+ * @author meiby
  * @version 1.0
  * @description
  * @date 2018/11/1 14:40
@@ -17,6 +17,10 @@ public class UserDO {
     private Date updateTime;
 
     private Date createTime;
+
+    public UserDO() {
+        System.out.println("userDO");
+    }
 
     public Integer getId() {
         return id;
