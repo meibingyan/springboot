@@ -21,18 +21,14 @@ public class DistributedLock {
     }
 
 
-    /**
-     * 尝试获取锁，获取失败的话，不需要再执行releaseLock
-     *
-     * @return true:获得锁成功, false:获得锁失败
-     */
+
     public boolean getLock(String lockName) {
         if(!StringUtils.isEmpty(this.lockName)){
             return false;
         }
 
         this.lockName = lockName;
-        this.zkPath = "/com/midea/jr/distributedLock/" + this.lockName;
+        this.zkPath = "/distributedLock/" + this.lockName;
 
         zk.createPersistent(this.zkPath, true);
         lockPath = zk.createEphemeralSequential(this.zkPath + "/" + this.lockName, null);
@@ -57,11 +53,7 @@ public class DistributedLock {
 
         if (lockPath != null) {
             zk.delete(lockPath, -1);
-            try {
-                zk.delete(zkPath);
-            }catch (Exception e){
-
-            }
+            zk.delete(zkPath);
             System.out.println(Thread.currentThread().getId() + "解锁" + lockPath);
             lockPath = null;
         }
