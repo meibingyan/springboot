@@ -35,6 +35,9 @@ public class CommentController {
     private CommentService commentService;
 
     @Resource
+    private UserService userService;
+
+    @Resource
     private ServiceTemplate serviceTemplate;
 
     @RequestMapping("select")
@@ -73,9 +76,10 @@ public class CommentController {
         return serviceTemplate.execute(new SimpleCallback<Integer>() {
 
             @Override
-            public Integer execute() throws BizException {
+            public Integer execute() {
                 commentModel.setAddTime(new Date());
-                return commentService.update(commentModel);
+                commentService.update(commentModel);
+                return userService.update(new UserModel());
             }
 
         });

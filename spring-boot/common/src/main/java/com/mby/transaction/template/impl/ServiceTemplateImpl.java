@@ -23,7 +23,7 @@ public class ServiceTemplateImpl implements ServiceTemplate {
     @Override
     public <T> BizResult<T> execute(SimpleCallback<T> callback) {
         return transactionTemplate.execute((status) -> {
-              BizResult<T> result = new BizResult<>();
+              BizResult<T> result ;
                try{
                    //前置校验
                    callback.before();
@@ -34,7 +34,6 @@ public class ServiceTemplateImpl implements ServiceTemplate {
                    //记录业务日志
                    result = BizResult.fail();
                    status.setRollbackOnly();
-
                }finally {
                    try{
                        callback.after();

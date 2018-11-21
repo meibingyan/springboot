@@ -20,12 +20,16 @@ public class BizResult<T> {
         this.msg = msg;
     }
 
-    public static <T> BizResult success(T t){
-        return new BizResult(1,t,"SUCCESS");
+    public static <T> BizResult<T> success(T t){
+        return new BizResult<>(1,t,"SUCCESS");
     }
 
-    public static <T> BizResult fail(){
-        return new BizResult(0,null,"FAIL");
+    public static <T> BizResult<T> fail(){
+        return new BizResult<>(0,null,"FAIL");
+    }
+
+    public static BizResult fail(String msg){
+        return new BizResult<>(0,null,msg);
     }
 
     public int getCode() {
